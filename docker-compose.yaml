@@ -4,7 +4,7 @@ services:
     command:
       - "generate"
       - "-i"
-      - "http://localhost:3001/api-docs"
+      - "http://amsterdam-mail-service:8003/api-docs"
       - "-g"
       - "python"
       - "-o"
@@ -21,10 +21,31 @@ services:
       - "asyncio"
     volumes:
       - ".:/local"
-    network_mode: host
+    depends_on:
+      - amsterdam-mail-service
+
   amsterdam-mail-service-client:
     image: amsterdam/amsterdam-mail-service-client
     build:
       context: .
     volumes:
       - ".:/opt/amsterdam-mail-service-client"
+    depends_on:
+      - amsterdam-mail-service
+
+  amsterdam-mail-service:
+    image: amsterdam/amsterdam-mail-service:latest
+    environment:
+      PORT: 8003
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    ports:
+      - "8003:8003"
+    depends_on:
+      - mailpit
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+      - "1025:1025"
