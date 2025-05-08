@@ -1,0 +1,30 @@
+services:
+  openapi-generator-cli:
+    image: openapitools/openapi-generator-cli:v7.13.0
+    command:
+      - "generate"
+      - "-i"
+      - "http://localhost:3001/api-docs"
+      - "-g"
+      - "python"
+      - "-o"
+      - "/local"
+      - "--package-name"
+      - "amsterdam_mail_service_client"
+      - "--git-host"
+      - "github.com"
+      - "--git-user-id"
+      - "Amsterdam"
+      - "--git-repo-id"
+      - "amsterdam-mail-service-client"
+      - "--library"
+      - "asyncio"
+    volumes:
+      - ".:/local"
+    network_mode: host
+  amsterdam-mail-service-client:
+    image: amsterdam/amsterdam-mail-service-client
+    build:
+      context: .
+    volumes:
+      - ".:/opt/amsterdam-mail-service-client"
