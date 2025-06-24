@@ -19,6 +19,8 @@ services:
       - "amsterdam-mail-service-client"
       - "--library"
       - "asyncio"
+      - "-t"
+      - "/local/python"
     volumes:
       - ".:/local"
     depends_on:

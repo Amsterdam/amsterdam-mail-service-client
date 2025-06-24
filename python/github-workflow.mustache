@@ -3,7 +3,8 @@
 #
 # ref: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: amsterdam_mail_service_client Python package
+name: {{packageName}} Python package
+{{=<% %>=}}
 
 on: [pull_request]
 
@@ -39,4 +40,4 @@ jobs:
           pip install -r test-requirements.txt
       - name: Test with pytest
         run: |
-          pytest --cov=amsterdam_mail_service_client
+          pytest --cov=<%packageName%>
