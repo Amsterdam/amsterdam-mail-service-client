@@ -1,3 +1,4 @@
+import os
 from unittest.async_case import IsolatedAsyncioTestCase
 
 from amsterdam_mail_service_client import Configuration, ApiClient, DefaultApi, PreviewRequest
@@ -5,7 +6,11 @@ from amsterdam_mail_service_client import Configuration, ApiClient, DefaultApi, 
 
 class TestPreview(IsolatedAsyncioTestCase):
     def setUp(self) -> None:
-        self.configuration = Configuration(host="http://amsterdam-mail-service:8003")
+        host = "http://amsterdam-mail-service:8003"
+        ci = os.getenv("CI")
+        if ci is True:
+            host="http://localhost:8003"
+        self.configuration = Configuration(host=host)
 
     async def test_preview(self) -> None:
         async with ApiClient(self.configuration) as api_client:
