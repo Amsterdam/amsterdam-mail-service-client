@@ -8,7 +8,7 @@ class TestPreview(IsolatedAsyncioTestCase):
     def setUp(self) -> None:
         host = "http://amsterdam-mail-service:8003"
         ci = os.getenv("CI")
-        if ci is True:
+        if ci is "true":
             host="http://localhost:8003"
         self.configuration = Configuration(host=host)
 
