@@ -7,6 +7,9 @@ name: amsterdam_mail_service_client Python package
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   build:
 
@@ -17,6 +20,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Pull service
+        run: docker pull amsterdam/amsterdam-mail-service:latest
+      - name: Start mail service
+        run: docker run -itd -e PORT=8003 amsterdam/amsterdam-mail-service:latest
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
