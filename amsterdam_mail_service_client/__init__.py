@@ -16,21 +16,38 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "DefaultApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "PreviewRequest",
+    "Send200Response",
+    "SendRequest",
+]
+
 # import apis into sdk package
-from amsterdam_mail_service_client.api.default_api import DefaultApi
+from amsterdam_mail_service_client.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
-from amsterdam_mail_service_client.api_response import ApiResponse
-from amsterdam_mail_service_client.api_client import ApiClient
-from amsterdam_mail_service_client.configuration import Configuration
-from amsterdam_mail_service_client.exceptions import OpenApiException
-from amsterdam_mail_service_client.exceptions import ApiTypeError
-from amsterdam_mail_service_client.exceptions import ApiValueError
-from amsterdam_mail_service_client.exceptions import ApiKeyError
-from amsterdam_mail_service_client.exceptions import ApiAttributeError
-from amsterdam_mail_service_client.exceptions import ApiException
+from amsterdam_mail_service_client.api_response import ApiResponse as ApiResponse
+from amsterdam_mail_service_client.api_client import ApiClient as ApiClient
+from amsterdam_mail_service_client.configuration import Configuration as Configuration
+from amsterdam_mail_service_client.exceptions import OpenApiException as OpenApiException
+from amsterdam_mail_service_client.exceptions import ApiTypeError as ApiTypeError
+from amsterdam_mail_service_client.exceptions import ApiValueError as ApiValueError
+from amsterdam_mail_service_client.exceptions import ApiKeyError as ApiKeyError
+from amsterdam_mail_service_client.exceptions import ApiAttributeError as ApiAttributeError
+from amsterdam_mail_service_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from amsterdam_mail_service_client.models.preview_request import PreviewRequest
-from amsterdam_mail_service_client.models.send200_response import Send200Response
-from amsterdam_mail_service_client.models.send_request import SendRequest
+from amsterdam_mail_service_client.models.preview_request import PreviewRequest as PreviewRequest
+from amsterdam_mail_service_client.models.send200_response import Send200Response as Send200Response
+from amsterdam_mail_service_client.models.send_request import SendRequest as SendRequest
