@@ -1,7 +1,6 @@
 .github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 amsterdam_mail_service_client/__init__.py
@@ -28,8 +27,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_default_api.py
-test/test_preview_request.py
-test/test_send200_response.py
-test/test_send_request.py
 tox.ini
