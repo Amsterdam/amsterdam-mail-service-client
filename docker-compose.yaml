@@ -1,6 +1,6 @@
 services:
   openapi-generator-cli:
-    image: openapitools/openapi-generator-cli:v7.14.0
+    image: openapitools/openapi-generator-cli:v7.19.0
     command:
       - "generate"
       - "-i"
@@ -41,6 +41,7 @@ services:
       PORT: 8003
       SMTP_HOST: mailpit
       SMTP_PORT: 1025
+      NODE_ENV: development
     ports:
       - "8003:8003"
     depends_on:
