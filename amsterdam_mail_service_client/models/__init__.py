@@ -12,8 +12,10 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
+from amsterdam_mail_service_client.models.credentials_request import CredentialsRequest
 from amsterdam_mail_service_client.models.preview_request import PreviewRequest
 from amsterdam_mail_service_client.models.send200_response import Send200Response
+from amsterdam_mail_service_client.models.send404_response import Send404Response
 from amsterdam_mail_service_client.models.send_request import SendRequest
+

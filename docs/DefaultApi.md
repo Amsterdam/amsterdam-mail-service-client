@@ -4,9 +4,79 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**credentials**](DefaultApi.md#credentials) | **POST** /credentials/ | Stores SMTP credentials in keyvault.
 [**preview**](DefaultApi.md#preview) | **POST** /preview/ | Renders a preview of the mail that would be sent.
 [**send**](DefaultApi.md#send) | **POST** /send/ | Sends mail using the provided input and the template on the server.
 
+
+# **credentials**
+> Send200Response credentials(credentials_request=credentials_request)
+
+Stores SMTP credentials in keyvault.
+
+### Example
+
+
+```python
+import amsterdam_mail_service_client
+from amsterdam_mail_service_client.models.credentials_request import CredentialsRequest
+from amsterdam_mail_service_client.models.send200_response import Send200Response
+from amsterdam_mail_service_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = amsterdam_mail_service_client.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+async with amsterdam_mail_service_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = amsterdam_mail_service_client.DefaultApi(api_client)
+    credentials_request = amsterdam_mail_service_client.CredentialsRequest() # CredentialsRequest | Input required for storing SMTP credentials in keyvault (optional)
+
+    try:
+        # Stores SMTP credentials in keyvault.
+        api_response = await api_instance.credentials(credentials_request=credentials_request)
+        print("The response of DefaultApi->credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_request** | [**CredentialsRequest**](CredentialsRequest.md)| Input required for storing SMTP credentials in keyvault | [optional] 
+
+### Return type
+
+[**Send200Response**](Send200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, text/html
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad request |  * www-authenticate -  <br>  |
+**401** | Unauthorized |  * www-authenticate -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **preview**
 > str preview(preview_request=preview_request)
@@ -138,6 +208,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**404** | Credentials not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
