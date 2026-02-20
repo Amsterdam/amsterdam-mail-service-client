@@ -28,8 +28,10 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "CredentialsRequest",
     "PreviewRequest",
     "Send200Response",
+    "Send404Response",
     "SendRequest",
 ]
 
@@ -48,6 +50,9 @@ from amsterdam_mail_service_client.exceptions import ApiAttributeError as ApiAtt
 from amsterdam_mail_service_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from amsterdam_mail_service_client.models.credentials_request import CredentialsRequest as CredentialsRequest
 from amsterdam_mail_service_client.models.preview_request import PreviewRequest as PreviewRequest
 from amsterdam_mail_service_client.models.send200_response import Send200Response as Send200Response
+from amsterdam_mail_service_client.models.send404_response import Send404Response as Send404Response
 from amsterdam_mail_service_client.models.send_request import SendRequest as SendRequest
+
