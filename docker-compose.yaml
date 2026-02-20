@@ -36,7 +36,7 @@ services:
       - amsterdam-mail-service
 
   amsterdam-mail-service:
-    image: amsterdam/amsterdam-mail-service:latest
+    image: amsterdamsoftwareontwikkeling/amsterdam-mail-service-old:latest
     environment:
       PORT: 8003
       SMTP_HOST: mailpit
