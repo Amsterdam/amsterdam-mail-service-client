@@ -26,8 +26,8 @@ jobs:
           docker pull axllent/mailpit:latest
       - name: Start mail services
         run: |
-          docker run -itd --network=host -e PORT=8003 -e SMTP_HOST=localhost -e SMTP_PORT=1025 -p 8003:8003 amsterdam/amsterdam-mail-service:latest
-          docker run -itd --network=host -p 1025:1025 axllent/mailpit:latest
+          docker run -itd --network=host -e PORT=8003 -e SMTP_HOST=localhost -e SMTP_PORT=1025 -p 8003:8003 -e SMTP_USER="test_smt_user" -e SMTP_PASS="smtp_secret"  amsterdam/amsterdam-mail-service:latest
+          docker run -itd --network=host -p 1025:1025 axllent/mailpit:latest -e MP_SMTP_AUTH_ALLOW_INSECURE="true" -e MP_SMTP_AUTH="test_smtp_user:smtp_secret"
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
