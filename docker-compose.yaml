@@ -1,6 +1,6 @@
 services:
   openapi-generator-cli:
-    image: openapitools/openapi-generator-cli:v7.14.0
+    image: openapitools/openapi-generator-cli:v7.21.0
     command:
       - "generate"
       - "-i"
@@ -36,11 +36,12 @@ services:
       - amsterdam-mail-service
 
   amsterdam-mail-service:
-    image: amsterdam/amsterdam-mail-service:latest
+    image: amsterdamsoftwareontwikkeling/amsterdam-mail-service-old:latest
     environment:
       PORT: 8003
       SMTP_HOST: mailpit
       SMTP_PORT: 1025
+      NODE_ENV: production
     ports:
       - "8003:8003"
     depends_on:

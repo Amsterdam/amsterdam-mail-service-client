@@ -11,14 +11,18 @@ amsterdam_mail_service_client/api_response.py
 amsterdam_mail_service_client/configuration.py
 amsterdam_mail_service_client/exceptions.py
 amsterdam_mail_service_client/models/__init__.py
+amsterdam_mail_service_client/models/credentials_request.py
 amsterdam_mail_service_client/models/preview_request.py
 amsterdam_mail_service_client/models/send200_response.py
+amsterdam_mail_service_client/models/send404_response.py
 amsterdam_mail_service_client/models/send_request.py
 amsterdam_mail_service_client/py.typed
 amsterdam_mail_service_client/rest.py
+docs/CredentialsRequest.md
 docs/DefaultApi.md
 docs/PreviewRequest.md
 docs/Send200Response.md
+docs/Send404Response.md
 docs/SendRequest.md
 git_push.sh
 pyproject.toml
@@ -27,4 +31,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_credentials_request.py
+test/test_send404_response.py
 tox.ini
