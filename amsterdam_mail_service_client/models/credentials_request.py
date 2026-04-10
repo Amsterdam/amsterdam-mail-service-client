@@ -24,14 +24,13 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class PreviewRequest(BaseModel):
+class CredentialsRequest(BaseModel):
     """
-    PreviewRequest
+    CredentialsRequest
     """ # noqa: E501
-    title: Annotated[str, Field(min_length=2, strict=True)]
-    preview_text: Annotated[str, Field(min_length=2, strict=True)] = Field(alias="previewText")
-    body_text: Annotated[str, Field(min_length=2, strict=True)] = Field(alias="bodyText")
-    __properties: ClassVar[List[str]] = ["title", "previewText", "bodyText"]
+    username: Annotated[str, Field(min_length=2, strict=True)]
+    password: Annotated[str, Field(min_length=2, strict=True)]
+    __properties: ClassVar[List[str]] = ["username", "password"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +50,7 @@ class PreviewRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PreviewRequest from a JSON string"""
+        """Create an instance of CredentialsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +75,7 @@ class PreviewRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PreviewRequest from a dict"""
+        """Create an instance of CredentialsRequest from a dict"""
         if obj is None:
             return None
 
@@ -84,9 +83,8 @@ class PreviewRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "title": obj.get("title"),
-            "previewText": obj.get("previewText"),
-            "bodyText": obj.get("bodyText")
+            "username": obj.get("username"),
+            "password": obj.get("password")
         })
         return _obj
 
